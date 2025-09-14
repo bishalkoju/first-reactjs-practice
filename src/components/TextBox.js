@@ -1,24 +1,39 @@
-import React ,{useState} from 'react'
+import React ,{useState} from 'react' // usestate is a hook
 
 export default function TextBox(props) {
     const handleupclick = () => {
-            console.log("upper case was clicked" + text);
+            console.log("upper case was clicked");
             let newText = text.toUpperCase();
+            setText(newText);
+    }// handleonchange function is used to change the text in the textbox
+    const handleloclick = () => {
+            console.log("lower case was clicked");
+            let newText = text.toLowerCase();
             setText(newText);
     }
     const handleonchange = (event) => {
         console.log("on change");
         setText(event.target.value);
-    }
-    const [text,setText] = useState("added texted")
+    }// usestate is used to change the text in the textbox
+    const [text,setText] = useState("")// usestate is a hook
   return (
-    <div>
-        <h1>{props.heading}</h1>
-        <div className="mb-3">
-        <label htmlFor="myBox" className="form-label"></label>
-        <textarea className="form-control" value={text} onChange={handleonchange} id="myBox" rows="8"></textarea>
-        <button className="btn btn-primary" onClick={handleupclick}>Convert in upercase</button>
-        </div>
-    </div>
+    <>
+      < div className="container">
+          <h1>{props.heading}</h1>
+          <div className="mb-3">
+          <label htmlFor="myBox" className="form-label"></label>
+          <textarea className="form-control" value={text} onChange={handleonchange} id="myBox" rows="8"></textarea>
+          <button className="btn btn-dark mx-2 " onClick={handleupclick}>Convert in upercase</button> 
+          <button className="btn btn-dark mx-2 " onClick={handleloclick} mx>Convert in lowercase</button>    
+          </div>
+      </div>
+      <div className="container">
+        <h2>Text Summary</h2>
+        <p>{text.length} letters and {text.split(" ").length} words</p>
+        <p>{0.008 * text.split(" ").length} Minutes to read</p>
+        <h2>Preview</h2>
+        <p>{text.length>0?text:"Enter something in the textbox above to preview it here"}</p>
+      </div>
+    </>
   )
 }
