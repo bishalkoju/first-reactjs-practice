@@ -11,6 +11,17 @@ export default function TextBox(props) {
             let newText = text.toLowerCase();
             setText(newText);
     }
+    const handleclearclick = () => {
+            console.log("clear was clicked");
+            let newText = " ";
+            setText(newText);
+    }
+    const handlecapclick = () => {
+            console.log("capitalize case was clicked");
+            let newText = text.split(" ").map( text => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()).join(" ");
+            setText(newText);
+    }
+
     const handleonchange = (event) => {
         console.log("on change");
         setText(event.target.value);
@@ -24,7 +35,9 @@ export default function TextBox(props) {
           <label htmlFor="myBox" className="form-label"></label>
           <textarea className="form-control" value={text} onChange={handleonchange} id="myBox" rows="8"></textarea>
           <button className="btn btn-dark mx-2 " onClick={handleupclick}>Convert in upercase</button> 
-          <button className="btn btn-dark mx-2 " onClick={handleloclick} mx>Convert in lowercase</button>    
+          <button className="btn btn-dark mx-2 " onClick={handleloclick}>Convert in lowercase</button> 
+          <button className="btn btn-dark mx-2 " onClick={handleclearclick}>Clear text</button>   
+          <button className="btn btn-dark mx-2 " onClick={handlecapclick}>Capitalize</button>   
           </div>
       </div>
       <div className="container">
