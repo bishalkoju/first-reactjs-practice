@@ -29,18 +29,18 @@ export default function TextBox(props) {
     const [text,setText] = useState("")// usestate is a hook
   return (
     <>
-      < div className="container">
+      < div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
           <h1>{props.heading}</h1>
           <div className="mb-3">
           <label htmlFor="myBox" className="form-label"></label>
-          <textarea className="form-control" value={text} onChange={handleonchange} id="myBox" rows="8"></textarea>
+          <textarea className="form-control" style={{backgroundColor: props.mode==='dark'? 'gray' :'white', color: props.mode==='dark'?'white':'black'}}  value={text} onChange={handleonchange} id="myBox" rows="8"></textarea>
           <button className="btn btn-dark mx-2 " onClick={handleupclick}>Convert in upercase</button> 
           <button className="btn btn-dark mx-2 " onClick={handleloclick}>Convert in lowercase</button> 
           <button className="btn btn-dark mx-2 " onClick={handleclearclick}>Clear text</button>   
           <button className="btn btn-dark mx-2 " onClick={handlecapclick}>Capitalize</button>   
           </div>
       </div>
-      <div className="container">
+      <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
         <h2>Text Summary</h2>
         <p>{text.length} letters and {text.split(" ").length} words</p>
         <p>{0.008 * text.split(" ").length} Minutes to read</p>
