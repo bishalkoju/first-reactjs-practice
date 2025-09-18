@@ -5,21 +5,25 @@ export default function TextBox(props) {
             console.log("upper case was clicked");
             let newText = text.toUpperCase();
             setText(newText);
+            props.showAlert("Converted to uppercase","success");
     }// handleonchange function is used to change the text in the textbox
     const handleloclick = () => {
             console.log("lower case was clicked");
             let newText = text.toLowerCase();
             setText(newText);
+            props.showAlert("Converted to lowercase","success");
     }
     const handleclearclick = () => {
             console.log("clear was clicked");
             let newText = " ";
             setText(newText);
+            props.showAlert("Converted to clear","success");
     }
     const handlecapclick = () => {
             console.log("capitalize case was clicked");
             let newText = text.split(" ").map( text => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()).join(" ");
             setText(newText);
+            props.showAlert("Converted to Capitalized Case","success");
     }
 
     const handleonchange = (event) => {
@@ -38,6 +42,7 @@ export default function TextBox(props) {
           <button className="btn btn-dark mx-2 " onClick={handleloclick}>Convert in lowercase</button> 
           <button className="btn btn-dark mx-2 " onClick={handleclearclick}>Clear text</button>   
           <button className="btn btn-dark mx-2 " onClick={handlecapclick}>Capitalize</button>   
+          {/* <button className="btn btn-dark mx-2 " onClick={handlespaceclick}>Remove space</button>  */}
           </div>
       </div>
       <div className="container" style={{color: props.mode==='dark'?'white':'black'}}>
